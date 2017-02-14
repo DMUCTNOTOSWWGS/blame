@@ -2,24 +2,23 @@
 
 EMAIL=2017jhoughto@tjhsst.edu
 
-if [ "$1" = "James" ] && [ "$2" = "Houghton" ]
+shopt -s nocasematch
+
+if [[ "$1" =~ "James" ]] && [[ "$2" =~ "Houghton" ]]
 then
 	echo "What would you like to blame on James Houghton?"
 	read RESPONSE
-	echo "Please type your name"
+	echo -n "Please type your name: "
 	read NAME
-	echo "Please type your email"
+	echo -n "Please type your email: "
 	read FROM
 	echo "$RESPONSE" | mailx -s "Blame on $(date)" -r "$NAME<$FROM>" $EMAIL
 else
-#	for NAME in "$@"
-#	do
-#		echo -n "$NAME "
-#	done
 	if [ -z "$@" ];
 	then
 		echo "no arguments xd"
-		exit 1
+		exit 2
 	fi
-	echo "$@ is not to blame"
+	echo "Error: $@ is not to blame"
+	exit 1
 fi
