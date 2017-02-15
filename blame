@@ -7,12 +7,12 @@ shopt -s nocasematch
 if [[ "$1" =~ "James" ]] && [[ "$2" =~ "Houghton" ]]
 then
 	echo "What would you like to blame on James Houghton?"
-	read RESPONSE
+	read response
 	echo -n "Please type your name: "
-	read NAME
+	read name
 	echo -n "Please type your email: "
-	read FROM
-	echo "$RESPONSE" | mailx -s "Blame on $(date)" -r "$NAME<$FROM>" $EMAIL
+	read from
+	echo "$response" | mailx -s "Blame on $(date) by $(name)" -r "$name<$from>" $EMAIL
 else
 	if [ -z "$@" ];
 	then
