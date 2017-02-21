@@ -12,7 +12,7 @@ then
 	read name
 	echo -n "Please type your email: "
 	read from
-	echo "$response" | mailx -s "Blame on $(date) by $name" -r "$name<$from>" $EMAIL
+	echo -e "$response" | mailx -s "Blame on $(date) by $name" -r "$name<$from>" $EMAIL
 else
 	if [ -z "$@" ];
 	then
